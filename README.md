@@ -76,29 +76,28 @@ Before you begin, ensure you have the following installed on your machine:
    http://localhost:3002/health
    ```
 
-
 ## Accessing the UI Dashboard
 
 Once the containers are running, you can access the UI dashboard at:
-   ```
-   http://localhost:8080
-   ```
+
+```
+http://localhost:8080
+```
 
 The dashboard provides a user-friendly interface to interact with the procurement service and view the data. Make sure to explore the various features available in the dashboard.
-
 
 ## Tasks
 
 ### 1. Fix the Invalid Date Issue
 
-Currently, the `createdat` field in the response may show an invalid date in the UI. Your task is to ensure that the date is formatted correctly before sending it to the client. 
+Currently, the `createdat` field in the response may show an invalid date in the UI. Your task is to ensure that the date is formatted correctly before sending it to the client.
 
 - Investigate the code in the procurement controller and ensure that the date is being set to the current date when a new request is created.
 - If the date is being retrieved from a database, ensure it is formatted correctly in ISO format.
 
 ### 2. Integrate External API Data
 
-Enhance the procurement service by integrating data from an external API. 
+Enhance the procurement service by integrating data from an external API.
 
 - Choose an external API that provides relevant data (e.g., product information, inventory levels, etc.).
 - Implement a new endpoint that fetches data from this external API and returns it in a structured format.
@@ -124,6 +123,7 @@ Enhance the vendor service by integrating data from an external API to create pr
 Enhance the procurement service by adding two new endpoints to filter procurements.
 
 - **Endpoint 1**: Filter procurements by quantity.
+
   - **Path**: `/api/procurements/filter-by-quantity`
   - **Method**: `GET`
   - **Query Parameter**: `minQuantity` (the minimum quantity to filter procurements)

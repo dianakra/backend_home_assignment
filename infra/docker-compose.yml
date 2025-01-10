@@ -1,4 +1,4 @@
-version: '3.9'
+version: "3.9"
 
 networks:
   sourcix-network:
@@ -11,7 +11,7 @@ services:
     ports:
       - "3001:3001"
     networks:
-      - sourcix-network  
+      - sourcix-network
     environment:
       - DB_HOST=vendor-db
       - DB_USER=postgres
@@ -62,13 +62,12 @@ services:
     ports:
       - "8080:8080"
     networks:
-      - sourcix-network  
+      - sourcix-network
     depends_on:
       vendor-service:
         condition: service_started
       procurement-service:
         condition: service_started
-
 
   vendor-db:
     image: postgres:13
