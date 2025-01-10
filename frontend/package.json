@@ -1,17 +1,17 @@
 {
-    "name": "sourcix-ui",
-    "version": "1.0.0",
-    "scripts": {
-        "serve": "vue-cli-service serve",
-        "build": "vue-cli-service build",
-        "lint": "vue-cli-service lint"
-    },
-    "dependencies": {
-        "@types/cors": "^2.8.17",
-        "cors": "^2.8.5",
-        "vue": "^3.2.0"
-    },
-    "devDependencies": {
-        "@vue/cli-service": "^5.0.0"
-    }
+  "name": "sourcix-ui",
+  "version": "1.0.0",
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "@types/cors": "^2.8.17",
+    "cors": "^2.8.5",
+    "vue": "^3.2.0"
+  },
+  "devDependencies": {
+    "@vue/cli-service": "^5.0.0"
+  }
 }
