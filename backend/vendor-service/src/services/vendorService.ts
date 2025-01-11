@@ -9,6 +9,13 @@ const pool = new Pool({
   port: Number(process.env.DB_PORT) || 5432,
 });
 
+export const getVendorById = async (id: string): Promise<Vendor[]> => {
+  const result = await pool.query(
+    `SELECT * FROM vendors WHERE id = ${id} LIMIT 1`
+  );
+  return result.rows;
+};
+
 export const getVendors = async (): Promise<Vendor[]> => {
   const result = await pool.query("SELECT * FROM vendors");
   return result.rows;
