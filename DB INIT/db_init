@@ -16,4 +16,11 @@ CREATE TABLE procurements (
     items JSON NOT NULL,
     status VARCHAR(50) DEFAULT 'open',
     createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    vendotId TEXT,
+);
+
+CREATE TABLE vendors (
+    id SERIAL PRIMARY KEY,
+    certifications TEXT[],
+    rating FLOAT DEFAULT 0
 );

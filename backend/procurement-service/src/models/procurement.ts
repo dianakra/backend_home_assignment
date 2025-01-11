@@ -7,4 +7,5 @@ export interface Procurement {
   items: { itemName: string; quantity: number }[];
   status: ProcurementStatus;
   createdAt: Date;
+  vendorId: string;
 }
