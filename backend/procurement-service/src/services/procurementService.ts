@@ -92,18 +92,30 @@ export const generateProcurments = async (
     "https://a51164b0-afe6-4682-9b32-1e570ed9049f.mock.pstmn.io/product"
   );
 
-  const items = new Array(5).fill(0).map((_, index: number) => ({
-    title: `Request ${String.fromCharCode(65 + index)}`,
-    description: `Need ${data.amount} units of ${data.name}`,
-    items: [{ itemName: data.name, quantity: data.amount }],
-    vendorId,
-  }));
+  const items = new Array(5)
+    .fill(0)
+    .map(
+      (_, index: number) =>
+        `('${String.fromCharCode(65 + index)}','Need ${data.amount} units of ${
+          data.name
+        }','${JSON.stringify([
+          { itemName: data.name, quantity: data.amount },
+        ])}','${
+          ProcurementStatus.OPEN
+        }','${new Date().toISOString()}','${vendorId}')`
+    );
 
-  const result = await Promise.all(
-    items.map((item) => addProcurement({ ...item }))
-  );
+  const client = await pool.connect();
 
-  return result;
+  try {
+    const result = await client.query(
+      `INSERT INTO procurements (title, description, items, status, createdAt, vendorId) VALUES ${items} RETURNING *`
+    );
+
+    return result.rows;
+  } finally {
+    client.release();
+  }
 };
 
 export const addProcurement = async (
@@ -119,7 +131,7 @@ export const addProcurement = async (
         description,
         JSON.stringify(items || []),
         status || ProcurementStatus.OPEN,
-        new Date(),
+        new Date().toISOString(),
         vendorId,
       ]
     );
