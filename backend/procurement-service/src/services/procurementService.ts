@@ -38,7 +38,7 @@ export const getProcurements = async (params: {
   let whereConditions: string[] = [];
 
   if (status) {
-    whereConditions.push(`status = $${status}`);
+    whereConditions.push(`status = '${status}'`);
   }
 
   if (minQuantity) {
